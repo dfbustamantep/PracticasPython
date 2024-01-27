@@ -26,7 +26,7 @@ n2=40
 if not n1==n2:
     print("n1 y n2 no son iguales")
 '''
-
+'''
 edad =int(input("Digite su edad "))
 
 if(edad<18):
@@ -35,3 +35,35 @@ elif(edad==18):
     print("Tiene 18 años")
 else:
     print("Es mayor de edad")
+'''
+#Sentencia match desde la version 3.10
+'''
+numero = 4
+
+match numero:
+    case 1:
+        print("Uno")
+    
+    case 2:
+        print("Dos")
+    
+    case 3:
+        print("Tres")
+    
+    case _:
+        print("Numero no reconocido")
+
+'''
+
+numero =  int(input("Ingrese un numero: "))
+
+match numero:
+    case 0:
+        print("El numero es 0")
+    case numero if numero % 2 == 0:
+        print("El numero es par")
+    case numero if numero % 2 != 0:
+        print("El numero es impar")
+    #Este caso se ejecuta si ninguna de las opciones anteriores se cumplen
+    case _:
+        print("Numero no reconocido")    
