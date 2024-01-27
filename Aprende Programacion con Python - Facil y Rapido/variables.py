@@ -18,3 +18,9 @@ print(numero1)
 print(numero1)
 
 print(numero1,numero2,numero3)
+
+#Constantes 
+
+#No hay diferencia de declaración
+PI = 3.1416
+print(PI)
