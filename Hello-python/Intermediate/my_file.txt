@@ -1,0 +1,5 @@
+Mi nombre es Daniel
+Mi apellido es Bustamante
+20 años
+Y mi lenguaje favorito es Python
+Aunque tambien me gusta C++
