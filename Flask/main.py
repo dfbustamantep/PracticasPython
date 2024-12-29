@@ -2,7 +2,7 @@ from flask import Flask,request,make_response,redirect,render_template
 
 app = Flask(__name__)
 
-items ={"ITEM 1","ITEM 2","ITEM 3"}
+items ={"Arroz","Huevos","Cafe"}
 
 # endpoint punto final o ruta
 @app.route('/index')

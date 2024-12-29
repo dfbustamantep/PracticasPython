@@ -1,13 +1,25 @@
-{% if user_ip    %}
-    <h2>Hola que tal,tu direccion ip es {{user_ip}}</h2>
 
-{% else %}
-    <a href="{{ url_for('index')}}">Crear cookie</a>
+{% extends 'base.html'%}
 
-{% endif %}
+{% import 'macros.html' as macros %}
+<!--Heredamos de nuestro archivo base-->
+{%block title %}
+    {{super()}}
+    Welcome to Flask Project
+{% endblock %}
 
-<ul>
-{% for item in items %}
-    <li>{{item}}</li>
-{% endfor %}
-</ul>
+{% block content %}
+    {% if user_ip    %}
+        <h2>Hola que tal,tu direccion ip es {{user_ip}}</h2>
+
+    {% else %}
+        <a href="{{ url_for('index')}}">Crear cookie</a>
+
+    {% endif %}
+
+    <ul>
+        {% for item in items %}
+            {{macros.render_items(item)}}
+        {% endfor %}
+    </ul>`
+{% endblock %}
