@@ -1,8 +1,16 @@
 from flask import Flask,request,make_response,redirect,render_template
+from flask_bootstrap import Bootstrap
+
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 items ={"Arroz","Huevos","Cafe"}
+
+
+@app.errorhandler(404)
+def not_found_endpoint(error):
+    return render_template('404.html',error=error)
 
 # endpoint punto final o ruta
 @app.route('/index')
