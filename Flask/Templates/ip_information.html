@@ -2,6 +2,7 @@
 {% extends 'base.html'%}
 
 {% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf%}
 <!--Heredamos de nuestro archivo base-->
 {%block title %}
     {{super()}}
@@ -16,7 +17,9 @@
         <a href="{{ url_for('index')}}">Crear cookie</a>
 
     {% endif %}
-
+    <div class="container">
+        {{wtf.quick_form(login_form)}}
+    </div>
     <ul>
         {% for item in items %}
             {{macros.render_items(item)}}

@@ -1,5 +1,8 @@
 from flask import Flask,request,make_response,redirect,render_template,session
 from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms.fields import StringField,PasswordField,SubmitField
+from wtforms.validators import DataRequired
 
 
 app = Flask(__name__)
@@ -8,6 +11,10 @@ app.config["SECRET_KEY"]='CLAVE SEGURA'
 
 items ={"Arroz","Huevos","Cafe"}
 
+class LoginForm(FlaskForm):
+    username = StringField("Nombre del usuario",validators=[DataRequired()])
+    password = PasswordField("Contrasenia",validators=[DataRequired()])
+    submit = SubmitField("Enviar datos",validators=[DataRequired()])
 
 @app.errorhandler(404)
 def not_found_endpoint(error):
@@ -27,9 +34,11 @@ def index():
 @app.route('/show_information_address')
 def show_information():
     user_ip =session.get('user_ip_information')
+    login_form = LoginForm()
     context = {
         "user_ip":user_ip,
-        "items":items
+        "items":items,
+        "login_form":login_form
     }
     #return f"Hola que tal,tu direccion ip es {user_ip}"
                             #Busca en el carpeta templeates el archivo,la vairable de la izquierda es el valor que se esta llamando en el html
