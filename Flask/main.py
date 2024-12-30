@@ -1,4 +1,4 @@
-from flask import Flask,request,make_response,redirect,render_template,session
+from flask import Flask,request,make_response,redirect,render_template,session,url_for,flash
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField,PasswordField,SubmitField
@@ -45,7 +45,8 @@ def show_information():
     if login_form.validate_on_submit():
         username = login_form.username.data
         session["username"]=username
-        return make_response(redirect("/index"))
+        flash("Nombre de usuario registrado correctamente")
+        return redirect(url_for("index"))
     #return f"Hola que tal,tu direccion ip es {user_ip}"
                             #Busca en el carpeta templeates el archivo,la vairable de la izquierda es el valor que se esta llamando en el html
     return render_template('ip_information.html',**context)
