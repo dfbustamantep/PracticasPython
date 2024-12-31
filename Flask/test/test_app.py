@@ -23,10 +23,25 @@ class MainTest(TestCase):
         response = self.client.get(url_for("show_information"))
         self.assert200(response)
     
-    def test_Show_information_post(self):
+    def test_show_information_post(self):        
+        response = self.client.post(url_for("show_information"))
+        self.assert405(response)
+    
+    def test_auth_blueprint_exists_module(self):
+        self.assertIn("auth",self.app.blueprints)
+        
+    def test_auth_blueprint_login_get(self):
+        response = self.client.get(url_for("auth.login"))
+        self.assert200(response)
+        
+    def test_auth_blueprint_template(self):
+        self.client.get(url_for("auth.login"))
+        self.assertTemplateUsed("login.html")
+
+    def test_auth_blueprint_login_post(self):
         test_form_fake ={
             "username":"Daniel",
             "password":"1234"
         }
-        response = self.client.post(url_for("show_information"),data=test_form_fake)
+        response = self.client.post(url_for("auth.login"),data=test_form_fake)
         self.assertRedirects(response,url_for("index"))

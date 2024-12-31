@@ -29,22 +29,16 @@ def index():
     #return f"Hola,Como estas? tu direccion IP es la siguiente {user_ip_information}"
     #return 'Hello World!'
 
-@app.route('/show_information_address',methods=["GET","POST"])
+@app.route('/show_information_address')
 def show_information():
     user_ip =session.get('user_ip_information')
     username =session.get("username")
-    login_form = LoginForm()
     context = {
         "user_ip":user_ip,
         "items":items,
-        "login_form":login_form,
         "username":username
     }
-    if login_form.validate_on_submit():
-        username = login_form.username.data
-        session["username"]=username
-        flash("Nombre de usuario registrado correctamente")
-        return redirect(url_for("index"))
+
     #return f"Hola que tal,tu direccion ip es {user_ip}"
                             #Busca en el carpeta templeates el archivo,la vairable de la izquierda es el valor que se esta llamando en el html
     return render_template('ip_information.html',**context)
