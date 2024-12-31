@@ -15,8 +15,9 @@
     <li><b>Response:</b> Respuesta que el servidor le envia al cliente despues de su solicitud</li>
     <li><b>Templates:</b> Nos sirve para renderizar archivos HTML dinamico o estatico</li>
     <li><b>url_for: </b>Funcion que permite crear un link hacia un url de flask donde solo decimos el nombre de la funcion  </li>
-    <li><b></b> </li>
-    <li><b></b> </li>
+    <li><b>Herencia de templates: </b>Crear un template base (HTML) y usar en otrs archivos sin reptir el código</li>
+    <li><b>Macros:</b> Archivo HTML que contienene funciones dentro de JINJA que permite renderizar ciertas plantillas para determinadas partes de nuestra interfaz </li>
+    <!--<li><b></b> </li>-->
 </ul>
 
 <section>
@@ -96,6 +97,31 @@
     <ul>
         {% for item in items %}
             <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+```
+
+- Herencia de templates,crear un archivo base.html en la carpeta de templates
+```jinja
+    {% extends 'base.html'%}
+
+    {% block title %}
+        {{ super() }}
+            Welcome
+    {% endblock %}
+```
+
+- Macros,crear un archivo macros.html en la carpeta de templates
+```jinja
+    {% macro render_items(item)%}
+        <li>Detalles del producto: {{item}}</li>
+    {% endmacro %}
+```
+
+```html
+    <ul>
+        {% for item in items%}
+            {{macros.render_items(item)}}
         {% endfor %}
     </ul>
 ```
