@@ -1,6 +1,6 @@
 ## Flask
 ### Documentación
-https://flask.palletsprojects.com/en/stable/
+[Documentacion Flask en Español](https://flask.palletsprojects.com/en/stable/)
 
 <nav>
 
@@ -8,12 +8,12 @@ https://flask.palletsprojects.com/en/stable/
 
 <h2>Conceptos</h2>
 <ul>
-    <li><b>Flask:</b> Framework de desarrollo web que tambien nos sirve para crear API's</li>
-    <li><b>JINJA:</b> Nos permite reenderizar los templeates (Motor de templates)</li>
+    <li><b>Flask:</b> Framework de desarrollo web que también nos sirve para crear API's</li>
+    <li><b>JINJA:</b> Nos permite renderizar los templates (Motor de templates)</li>
     <li><b>Endpoint:</b> Ruta</li>
     <li><b>Request:</b> Solicitud que viene del cliente al servidor</li>
-    <li><b>Response:</b> Respuesta que el servidor le envia al cliente despues de su nsolicitud</li>
-    <li><b>Templates:</b> Nos sirve para reenderizar archivos HTML dinamico o estatico</li>
+    <li><b>Response:</b> Respuesta que el servidor le envia al cliente despues de su solicitud</li>
+    <li><b>Templates:</b> Nos sirve para renderizar archivos HTML dinamico o estatico</li>
     <li><b>url_for: </b>Funcion que permite crear un link hacia un url de flask donde solo decimos el nombre de la funcion  </li>
     <li><b></b> </li>
     <li><b></b> </li>
@@ -34,16 +34,16 @@ https://flask.palletsprojects.com/en/stable/
 </section>
 
 <section>
-<h2>Instalación y uso de Flask<h2>
+<h2>Instalación y uso de Flask</h2>
 <ul>
 
 </ul>
 
-- Instalar Flask y los paquetes que requiere flask requiere por defecto
+- Instalar Flask y los paquetes que requiere flask por defecto
 ```python
     pip install flask
 ```
-- Guardar todas las librerias que necesitamos en un txt 
+- Guardar todas las libreréas que necesitamos en un txt 
 ```python
     pip freeze > requirements.txt
 ```
@@ -66,7 +66,7 @@ https://flask.palletsprojects.com/en/stable/
 ```python
     app.run(host='0.0.0.0',port=81)
 ```
-- Si se quiere hacer debuggin se debe poner un parametro mas
+- Si se quiere hacer debugging se debe poner un parametro mas
 ```python
     app.run(host='0.0.0.0',port=81,debug=True)
 ```
@@ -87,7 +87,7 @@ https://flask.palletsprojects.com/en/stable/
     {% if user_ip %}
         <h2>Hola que tal,tu direccion ip es {{user_ip}}</h2>
     {% else %}
-        <a href="{{ url_fo('index') }}">Else</a>
+        <a href="{{ url_for('index') }}">Else</a>
     {% endif %}
 ```
 
