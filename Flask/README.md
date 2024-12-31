@@ -35,9 +35,6 @@
 
 <section>
 <h2>Instalación y uso de Flask</h2>
-<ul>
-
-</ul>
 
 - Instalar Flask y los paquetes que requiere flask por defecto
 ```python
