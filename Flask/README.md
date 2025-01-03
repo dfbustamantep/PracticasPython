@@ -139,4 +139,39 @@
         {%include 'navbar.html'%}
     </header>
 ```
+- Manejar archivos estaticos en FLASK
+    <p>Debemos crear una carpeta static en el directorio raiz,ejemplo usando el nav que creamos anteriormente y una imagen en una carpeta images en la carpeta static,en la carpeta static tambien manejamos nuestro CSS</p>
+
+    ```html
+    <nav>
+        <ul>
+            <img src="{{url_for('static',filename='images/flask_font.png')}}" alt="">
+            <li><a href="{{url_for('index')}}">Boton inicio</a></li>
+            <li><a href="hhtps://ww.google.com"></a>Google</li>
+        </ul>
+    </nav>
+    ```
+
+- Controlando errores en Flask
+    <p>Cuando vamos a una ruta que no exite flask nos sdaca un error 404,usnado un decorador especial podemos manejar nuestros errores </p>
+
+    ```python
+    @app.errorhandler(404)
+    def not_found_endpoint(error):
+        return render_template('404.html',error=error)
+    ```
+
+    ```html
+    {%extends 'base.html'%}
+    {%block title%}
+        {{super()}}
+        404
+    {%endblock%}
+
+    {%block content%}
+        <h2>El recurso no existe</h2>
+        {{error}}
+    {%endblock%}
+    ```
+
 </section>
