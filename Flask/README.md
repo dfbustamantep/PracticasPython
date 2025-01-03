@@ -173,5 +173,56 @@
         {{error}}
     {%endblock%}
     ```
+- Flask bootstrap,la libreria de bootrsap viene con un base html con toda la estrucutra
+```
+    pip install flask-bootstrap 
+```
+```python
+    from flask_bootstrap import Bootstrap
+```
+```python
+    from flask import request,make_response,redirect,render_template
+
+    from flask_bootstrap import Bootstrap
+
+    app = Flask(__name__)
+    bootrap = Bootstrap(app)  
+```
+
+```html
+    {%extends 'bootstrap/base.html'%}
+    {%block head%}
+    {{super()}}
+
+    <title>
+        {% block title %} Flask Aplication Web| {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    {%endblock%}
+
+    {%block body%}
+        {%block navbar%}
+            {%include 'navbar.html'%}
+        {%endblock%}
+
+        {% block content %}
+        {% endblock %}
+    {%endblock%}
+```
+```html
+    <nav class="navbar navbar-default">
+        <img src="{{url_for('static',filename='images/flask.jpg')}}" alt="">
+        <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Flask App</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="{{url_for('index')}}">Boton inicio</a></li>
+            <li><a href="https://www.google.com">Boton google</a></li>
+
+        </ul>
+        </div>
+    </nav>
+```
 
 </section>
