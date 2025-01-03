@@ -125,4 +125,18 @@
         {% endfor %}
     </ul>
 ```
+- Reutilizando templates estaticos,se usa cuando queremos usar un template completo
+```html
+    <nav>
+        <ul>
+            <li><a href="{{url_for('index')}}">Boton inicio</a></li>
+            <li><a href="hhtps://ww.google.com"></a>Google</li>
+        </ul>
+    </nav>
+```
+```jinja
+    <header>
+        {%include 'navbar.html'%}
+    </header>
+```
 </section>
