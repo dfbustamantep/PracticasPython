@@ -287,4 +287,25 @@ def show_information():
     {{wtf.quick_form(login_form)}}
 
 ```
+
+- Metodo POST en flask
+    - Los endpoints de Flaks por defecto aceptan solicitudes de tipo get y necesitamos especificarle el resto de metodos https
+    ```python
+    @app.route('/show_information_address',methods=["GET","POST"])
+    def show_information():
+        user_ip =session.get('user_ip_information')
+        username =session.get("username")
+        login_form = LoginForm()
+        context = {
+            "user_ip":user_ip,
+            "items":items,
+            "login_form":login_form
+            "username":username
+        }
+        if login_form.valdate_on_submit():
+            username=login_form.username.data
+            session["username"]=username
+            return make_response(redirect("/index"))
+        return render_template('ip_information.html',**context)
+```
 </section>
