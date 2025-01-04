@@ -17,6 +17,7 @@
     <li><b>url_for: </b>Funcion que permite crear un link hacia un url de flask donde solo decimos el nombre de la funcion  </li>
     <li><b>Herencia de templates: </b>Crear un template base (HTML) y usar en otrs archivos sin reptir el código</li>
     <li><b>Macros:</b> Archivo HTML que contienene funciones dentro de JINJA que permite renderizar ciertas plantillas para determinadas partes de nuestra interfaz </li>
+    <li><b>Objeto Session:</b>En python existe este objeto que nos permite guardar de forma encripatada cierto tipo de datos </li>
     <!--<li><b></b> </li>-->
 </ul>
 
@@ -224,5 +225,66 @@
         </div>
     </nav>
 ```
+- Añadir configuraciones a FLASK
+    <p>El entorno de configuracion de FLASK por defecto es producción</p>
+    <p>Con el objeto session encirptamos los datos de la sesion y desencirpatmos con CLAVE SEGURA</p>
 
+    ```python
+        from flask import session;
+        app.config["SECRET_KEY"]="CLAVE SEGURA"
+
+        @app.route("/index")
+        def index():
+            user_ip=request.remote_addr
+            response = make_response(redirect("/show_information_addres"))
+            session["user_ip_information"] = user_ip_information
+    return response
+
+        @app.route('/show_information_address')
+        def show_information():
+            user_ip =session.get('user_ip_information')
+            username =session.get("username")
+            context = {
+                "user_ip":user_ip,
+                "items":items,
+                "username":username
+            }
+
+            return render_template('ip_information.html',**context)
+    ```
+- Formularios con Flask wtf
+```python
+    pip install flask-wtf
+```
+
+```python
+    from flask-wtf import FLaskForm
+    from wtfoms.fields import StringField,PasswordField,SubmitField
+    from wtfoms.fields import DataRequired
+    # En esta clase se implementan los campos que va a tener nuestro formulario
+    class LoginForm(FlaskForm):
+        username = StringField("Nombre del usuario",validators=[DataRequired()])
+        password = PasswordField("Contraseña",validators=[DataRequired()])
+        submit = SubmitField("Enviar datos",validators=[DataRequired()])
+```
+
+```python
+    @app.route('/show_information_address')
+def show_information():
+    user_ip =session.get('user_ip_information')
+    username =session.get("username")
+    login_form = LoginForm()
+    context = {
+        "user_ip":user_ip,
+        "items":items,
+        "login_form":login_form
+    }
+    return render_template('ip_information.html',**context)
+```
+```jinja
+    {% import 'bootstrap/wtf.html' as wtf%}
+
+    {{wtf.quick_form(login_form)}}
+
+```
 </section>
