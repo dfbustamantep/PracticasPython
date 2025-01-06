@@ -23,11 +23,9 @@ def not_found_endpoint(error):
 def index():
     user_ip_information = request.remote_addr
     response = make_response(redirect("/show_information_address"))
-    #response.set_cookie("user_ip_information",user_ip_information)
     session["user_ip_information"] = user_ip_information
     return response
-    #return f"Hola,Como estas? tu direccion IP es la siguiente {user_ip_information}"
-    #return 'Hello World!'
+
 
 @app.route('/show_information_address')
 def show_information():
@@ -38,8 +36,6 @@ def show_information():
         "items":items,
         "username":username
     }
-
-    #return f"Hola que tal,tu direccion ip es {user_ip}"
                             #Busca en el carpeta templeates el archivo,la vairable de la izquierda es el valor que se esta llamando en el html
     return render_template('ip_information.html',**context)
 

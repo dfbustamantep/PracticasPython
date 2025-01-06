@@ -347,4 +347,7 @@ def show_information():
         {{super()}}
     {%endblock%}
  ```
+
+ - Blueprints
+    <p>Forma para mdoularizar nuestra aplicacion</p>
 </section>
