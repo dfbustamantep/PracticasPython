@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{%block content%}
+    <div class="container-form">
+        <h3>REGISTER</h3>
+        <!--Ocualtar la etiqueta-->
+        {{ form.hidden_tag()}}
+        <!--Quickform recibe un formulario el; cual va a renderizar-->
+        {{wtf.quick_form(form)}}
+    </div>
+{%endblock content%}

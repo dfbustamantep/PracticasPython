@@ -3,7 +3,7 @@ from app import db,bcrypt
 from app import login_manager
 from flask_login import UserMixin
 
-class User(UserMixin,db.model):
+class User(UserMixin,db.Model):
     __tablename__ = 'users'
     
     id = db.Column(db.Integer,primary_key=True)

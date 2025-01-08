@@ -11,7 +11,7 @@ def email_exist(form,field):
         
 class RegistrationForm(FlaskForm):
     name = StringField("name",validators=[DataRequired(),Length(4,16,message="Between 4 to 16 characters")])
-    email = StringField("email",validators=[DataRequired(),Email(),email_exist()])
+    email = StringField("email",validators=[DataRequired(),Email(),email_exist])
     password = PasswordField("password",validators=[DataRequired(),EqualTo("confirm",message="Password must match")])
     confirm = PasswordField("confirm",validators=[DataRequired()]) 
     submit = SubmitField("Register")
@@ -21,3 +21,7 @@ class LoginForm(FlaskForm):
     password = PasswordField("password",validators=[DataRequired()])
     stay_loggeding = BooleanField("remember me")
     submit = SubmitField("Login")
+    
+class ScrappingForm(FlaskForm):
+    search_article = StringField("article",validators=[DataRequired()])
+    submit = SubmitField("search article")
